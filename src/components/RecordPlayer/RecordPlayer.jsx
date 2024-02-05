@@ -1,9 +1,12 @@
 import "./RecordPlayer.scss";
+import Record from "../../assets/images/record.svg";
 
 function RecordPlayer() {
-    return(
-        <div></div>
-    )
+  return (
+    <section className="record">
+      <img src={Record} alt="vinyl record" className="record__img"/>
+    </section>
+  );
 }
 
 export default RecordPlayer;
