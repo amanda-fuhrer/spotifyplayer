@@ -1,12 +1,12 @@
 import "./App.scss";
 import RecordPlayer from "./components/RecordPlayer/RecordPlayer";
-import Speaker from "./components/Speaker/Speaker";
+import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 
 function App() {
   return (
     <div className="App">
-      <Speaker />
       <RecordPlayer />
+      <MusicPlayer />
     </div>
   );
 }

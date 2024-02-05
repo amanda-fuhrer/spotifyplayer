@@ -1,3 +1,7 @@
+@import './partials/_mixins.scss';
+@import './partials/_variables.scss';
+@import './partials/_general.scss';
+
 .App {
   display: flex;
   justify-content: center;
