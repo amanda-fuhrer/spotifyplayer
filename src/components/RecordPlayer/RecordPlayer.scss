@@ -1,3 +1,6 @@
+@import "../../partials/_mixins.scss";
+@import "../../partials/_variables.scss";
+
 .record-player {
   position: relative;
 
@@ -5,7 +8,7 @@
     width: 22rem;
     height: 22rem;
     border-radius: 100%;
-    background-color: #161616;
+    background-color: $primary-background;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,3 +1,6 @@
+@import "../../partials/_mixins.scss";
+@import "../../partials/_variables.scss";
+
 .login {
   display: flex;
   flex-direction: column;
@@ -10,9 +13,9 @@
   &__button {
     width: 15rem;
     height: 2rem;
-    background-color: #efefef;
-    color: #000000;
+    background-color: $secondary-background;
+    color: $primary-text;
     border-radius: 0.5rem;
-    font-weight: bold;
+    font-weight: 600;
   }
 }

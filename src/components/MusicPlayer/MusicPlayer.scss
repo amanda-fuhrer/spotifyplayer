@@ -1,5 +1,8 @@
+@import "../../partials/_mixins.scss";
+@import "../../partials/_variables.scss";
+
 .music-player {
-  background-color: #efefef;
+  background-color: $secondary-background;
   display: flex;
   align-items: center;
   border-radius: 0.5rem;
