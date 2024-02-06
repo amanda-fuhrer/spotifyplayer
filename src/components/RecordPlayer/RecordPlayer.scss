@@ -1,6 +1,15 @@
 @import "../../partials/_mixins.scss";
 @import "../../partials/_variables.scss";
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .record-player {
   position: relative;
 
@@ -14,7 +23,7 @@
     align-items: center;
     position: relative;
 
-    &__img {
+    &__cover {
       width: 10rem;
       height: 10rem;
       border-radius: 100%;
@@ -22,6 +31,10 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+
+    &.spin {
+      animation: spin 5s linear infinite forwards;
     }
   }
 
