@@ -7,18 +7,29 @@
   align-items: center;
   border-radius: 0.5rem;
   padding: 2rem;
+  width: 55rem;
 
-  &__controls {
-    padding-left: 4rem;
+  &__details {
+    padding-left: 5rem;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
   }
 
   &__artist {
     font-size: 1rem;
+    padding-top: 1rem;
+    color: $primary-text;
   }
 
   &__track {
+    color: $primary-text;
     font-size: 1.5rem;
     text-transform: uppercase;
   }

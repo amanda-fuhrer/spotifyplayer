@@ -2,6 +2,12 @@ import "./MusicPlayer.scss";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import RecordPlayer from "../RecordPlayer/RecordPlayer";
+// import AudioPlayer from "../AudioPlayer/AudioPlayer";
+
+import NextIcon from "../../assets/icons/next.svg";
+import PlayIcon from "../../assets/icons/play.svg";
+import PauseIcon from "../../assets/icons/pause.svg";
+import PreviousIcon from "../../assets/icons/previous.svg";
 
 function MusicPlayer({ token }) {
   const [likedSongs, setLikedSongs] = useState([]);
@@ -9,7 +15,7 @@ function MusicPlayer({ token }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
+  const audioPlayer = useRef();
 
   useEffect(() => {
     // Fetch users liked songs
@@ -37,8 +43,21 @@ function MusicPlayer({ token }) {
     fetchLikedSongs();
   }, [token]);
 
+  // Handle navigation through the likedSongs array in the music player
+  // Increments the current song index, wrapping around to the beginning if it reaches the end
   const playNextSong = () => {
     setCurrentSongIndex((prevIndex) => (prevIndex + 1) % likedSongs.length);
+  };
+
+  // Decrements the current song index, wrapping around to the end if it goes below 0
+  const playPreviousSong = () => {
+    setCurrentSongIndex((prevIndex) => {
+      let newIndex = (prevIndex - 1) % likedSongs.length;
+      if (newIndex < 0) {
+        newIndex = likedSongs.length - 1;
+      }
+      return newIndex;
+    });
   };
 
   // Event handlers for managing the playback state of the audio element
@@ -54,13 +73,23 @@ function MusicPlayer({ token }) {
     playNextSong();
   };
 
+  const togglePlayPause = () => {
+    const prevValue = isPlaying;
+    setIsPlaying(!prevValue);
+    if (!prevValue) {
+      audioPlayer.current.play();
+    } else {
+      audioPlayer.current.pause();
+    }
+  };
+
   // Loading, error and empty state handles
   if (isLoading) {
     return <div>Loading</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>{error}</div>;
   }
 
   if (!likedSongs.length) {
@@ -72,21 +101,32 @@ function MusicPlayer({ token }) {
   return (
     <section className="music-player">
       <RecordPlayer currentSong={currentSong} isPlaying={isPlaying} />
-      <div className="music-player__controls">
+      <div className="music-player__details">
         <h1 className="music-player__track">{currentSong.name}</h1>
         <h2 className="music-player__artist">
           {currentSong.artists.map((artist) => artist.name).join(", ")}
         </h2>
         <audio
-          controls
           autoPlay
+          className="music-player__audio"
           src={currentSong.preview_url}
-          ref={audioRef}
           onPlay={handlePlay}
           onPause={handlePause}
           onEnded={handleEnded}
-        ></audio>
-        <button onClick={playNextSong}>Next</button>
+          onClick={playNextSong}
+          ref={audioPlayer}
+        />
+        <div className="music-player__controls">
+          <button onClick={playPreviousSong} className="music-player__controls">
+            <img src={PreviousIcon} alt="previous" />
+          </button>
+          <button onClick={togglePlayPause} className="music-player__controls">
+            <img src={isPlaying ? PauseIcon : PlayIcon} alt="pause/play" />
+          </button>
+          <button onClick={playNextSong} className="music-player__controls">
+            <img src={NextIcon} alt="next" />
+          </button>
+        </div>
       </div>
     </section>
   );
