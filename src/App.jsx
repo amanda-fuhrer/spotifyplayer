@@ -13,22 +13,41 @@ function App() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    // Retrieve token and hash
-    const token = window.localStorage.getItem("token");
-    const hash = window.location.hash;
+    const getTokenFromLocalStorage = () => window.localStorage.getItem("token");
 
-    // Clear the hash from URL
+    const hash = window.location.hash;
     window.location.hash = "";
 
-    // Set token based on presence of token and hash
-    const newToken = hash ? hash.split("&")[0].split("=")[1] : token;
+    const newToken = hash ? hash.split("&")[0].split("=")[1] : getTokenFromLocalStorage();
+
     if (newToken) {
+      const expiresIn = hash ? parseInt(hash.split("&")[2].split("=")[1]) : null;
+      if (expiresIn) {
+        const expirationTime = Date.now() / 1000 + expiresIn;
+        window.localStorage.setItem("tokenExpiration", expirationTime);
+      }
       window.localStorage.setItem("token", newToken);
       setToken(newToken);
     } else {
-      setToken(token);
+      setToken(getTokenFromLocalStorage());
     }
-  }, []);
+
+    const checkTokenExpiration = () => {
+      const tokenExpiration = window.localStorage.getItem("tokenExpiration");
+      const currentTime = Date.now() / 1000;
+      if (tokenExpiration && currentTime > parseInt(tokenExpiration)) {
+        window.localStorage.removeItem("token");
+        window.localStorage.removeItem("tokenExpiration");
+        window.location.href = loginEndpoint;
+      }
+    };
+
+    const intervalId = setInterval(checkTokenExpiration, 60 * 1000);
+
+    checkTokenExpiration();
+
+    return () => clearInterval(intervalId);
+  }, [loginEndpoint]);
 
   return (
     <div className="App">

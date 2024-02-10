@@ -2,7 +2,6 @@ import "./MusicPlayer.scss";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import RecordPlayer from "../RecordPlayer/RecordPlayer";
-// import AudioPlayer from "../AudioPlayer/AudioPlayer";
 
 import NextIcon from "../../assets/icons/next.svg";
 import PlayIcon from "../../assets/icons/play.svg";
@@ -117,13 +116,13 @@ function MusicPlayer({ token }) {
           ref={audioPlayer}
         />
         <div className="music-player__controls">
-          <button onClick={playPreviousSong} className="music-player__controls">
+          <button onClick={playPreviousSong} className="music-player__control">
             <img src={PreviousIcon} alt="previous" />
           </button>
-          <button onClick={togglePlayPause} className="music-player__controls">
+          <button onClick={togglePlayPause} className="music-player__control">
             <img src={isPlaying ? PauseIcon : PlayIcon} alt="pause/play" />
           </button>
-          <button onClick={playNextSong} className="music-player__controls">
+          <button onClick={playNextSong} className="music-player__control">
             <img src={NextIcon} alt="next" />
           </button>
         </div>

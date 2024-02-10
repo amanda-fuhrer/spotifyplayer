@@ -19,18 +19,23 @@
   &__controls {
     display: flex;
     justify-content: center;
-    padding: 2rem 1rem;
+  }
+
+  &__control {
+    padding: 2rem 1rem 0 1rem;
   }
 
   &__artist {
     font-size: 1rem;
-    padding-top: 1rem;
     color: $primary-text;
+    padding-top: 1rem;
+    font-weight: 400;
   }
 
   &__track {
     color: $primary-text;
     font-size: 1.5rem;
     text-transform: uppercase;
+    font-weight: 600;
   }
 }
