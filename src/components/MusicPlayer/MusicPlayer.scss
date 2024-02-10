@@ -4,16 +4,28 @@
 .music-player {
   background-color: $secondary-background;
   display: flex;
+  flex-direction: column;
   align-items: center;
   border-radius: 0.5rem;
   padding: 2rem;
-  width: 55rem;
+  width: 80%;
+
+  @include tablet {
+    flex-direction: row;
+    max-width: 50rem;
+  }
 
   &__details {
-    padding-left: 5rem;
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
+
+    @include tablet {
+      padding-left: 3rem;
+    }
   }
 
   &__controls {
@@ -22,7 +34,7 @@
   }
 
   &__control {
-    padding: 2rem 1rem 0 1rem;
+    margin: 2rem 1rem 0 1rem;
   }
 
   &__artist {
