@@ -1,0 +1,21 @@
+@import "../../partials/_mixins.scss";
+@import "../../partials/_variables.scss";
+
+.login {
+  display: flex;
+  flex-direction: column;
+
+  &__logo {
+    width: 15rem;
+    margin-bottom: 3rem;
+  }
+
+  &__button {
+    width: 15rem;
+    height: 2rem;
+    background-color: $secondary-background;
+    color: $primary-text;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+}

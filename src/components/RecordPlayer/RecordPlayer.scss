@@ -1,0 +1,60 @@
+@import "../../partials/_mixins.scss";
+@import "../../partials/_variables.scss";
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.record-player {
+  position: relative;
+
+  &__record {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 100%;
+    background-color: $primary-background;
+    display: flex;
+    position: relative;
+
+    @include tablet {
+      width: 20rem;
+      height: 20rem;
+    }
+
+    &__cover {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include tablet {
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+
+    &.spin {
+      animation: spin 5s linear infinite forwards;
+    }
+  }
+
+  &__needle {
+    height: 12rem;
+    position: absolute;
+    top: 45%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+
+    @include tablet {
+      height: 16rem;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@import "../partials/_mixins.scss";
+@import "../partials/_variables.scss";
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+img,
+ol,
+ul,
+li,
+form,
+article,
+footer,
+header,
+nav,
+section,
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+body {
+  box-sizing: border-box;
+  min-width: 320px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: $primary-text;
+}
+
+input {
+  border: none;
+  cursor: pointer;
+}
