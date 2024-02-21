@@ -6,7 +6,7 @@ import Login from "./components/Login/Login";
 function App() {
   const authEndpoint = "https://accounts.spotify.com/authorize?";
   const clientID = "c033eeb2e84b4c1b9ac6f858f3c68a27";
-  const redirectUri = "http://localhost:3000";
+  const redirectUri = "https://spotifyplayer-amandafuhrer.vercel.app";
   const scopes = ["user-library-read", "streaming"];
   const loginEndpoint = `${authEndpoint}client_id=${clientID}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialogue=true`;
 
