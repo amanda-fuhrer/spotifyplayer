@@ -1,9 +1,11 @@
 import "./Header.scss";
 
-function Header({logout}) {
+function Header({ logout }) {
   return (
     <header className="header">
-      <button onClick={logout} className="header__logout-button">Logout</button>
+      <button onClick={logout} className="header__logout-button">
+        logout
+      </button>
     </header>
   );
 }

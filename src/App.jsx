@@ -62,9 +62,11 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App__header">
-        <Header logout={logout} />
-      </div>
+      {token && (
+        <div className="App__header">
+          <Header logout={logout} />
+        </div>
+      )}
       <div className="App__body">
         {!token ? <Login loginEndpoint={loginEndpoint} /> : <MusicPlayer token={token} />}
       </div>
