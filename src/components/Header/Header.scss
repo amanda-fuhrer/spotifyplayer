@@ -1,0 +1,19 @@
+@import "../../partials/_mixins.scss";
+@import "../../partials/_variables.scss";
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+    padding: 2rem;
+
+    &__logout-button {
+        color: $secondary-text;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+
+        &:hover {
+            border-bottom: solid 0.1rem white;
+        }
+    }
+}
