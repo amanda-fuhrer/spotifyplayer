@@ -2,19 +2,23 @@
 @import "../../partials/_variables.scss";
 
 .header {
-    display: flex;
-    justify-content: flex-end;
-    width: 100vw;
-    padding: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+  padding: 2rem;
 
-    &__logout-button {
-        color: $secondary-text;
-        font-size: 1rem;
-        padding: 0.5rem 0;
-        font-family: "MPLUSCodeLatin";
+  @include tablet {
+    padding: 3rem;
+  }
 
-        &:hover {
-            border-bottom: solid 0.1rem white;
-        }
+  &__logout-button {
+    color: $secondary-text;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    font-family: "MPLUSCodeLatin";
+
+    &:hover {
+      border-bottom: solid 0.1rem $border;
     }
+  }
 }
