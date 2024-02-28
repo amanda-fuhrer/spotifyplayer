@@ -19,7 +19,6 @@
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     flex-grow: 1;
 
@@ -30,7 +29,6 @@
 
   &__controls {
     display: flex;
-    justify-content: center;
   }
 
   &__control {
@@ -45,8 +43,8 @@
   }
 
   &__track {
-    color: $primary-text;
     font-size: 1.5rem;
+    color: $primary-text;
     text-transform: uppercase;
     font-weight: 600;
   }

@@ -1,15 +1,21 @@
-@import './partials/_mixins.scss';
-@import './partials/_variables.scss';
-@import './partials/_general.scss';
-@import './partials/_fonts.scss';
+@import "./partials/_mixins.scss";
+@import "./partials/_variables.scss";
+@import "./partials/_general.scss";
+@import "./partials/_fonts.scss";
 
 .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   background-color: $primary-background;
-  height: 100vh;
-  font-family: 'Outfit';
   color: $secondary-text;
+  font-family: "Outfit";
+
+  &__header {
+    position: absolute;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 }

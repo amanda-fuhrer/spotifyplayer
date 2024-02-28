@@ -12,10 +12,17 @@
 
   &__button {
     width: 15rem;
-    height: 2rem;
-    background-color: $secondary-background;
-    color: $primary-text;
+    padding: 0.5rem;
+    background-color: $primary-background;
+    color: $secondary-text;
+    font-family: "MPLUSCodeLatin";
     border-radius: 0.5rem;
-    font-weight: 600;
+    border: solid 0.1rem $border;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: $secondary-background;
+      color: $primary-text;
+    }
   }
 }

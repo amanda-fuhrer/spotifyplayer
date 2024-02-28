@@ -2,6 +2,7 @@ import "./App.scss";
 import { useEffect, useState } from "react";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 import Login from "./components/Login/Login";
+import Header from "./components/Header/Header";
 
 function App() {
   const authEndpoint = "https://accounts.spotify.com/authorize?";
@@ -12,14 +13,22 @@ function App() {
 
   const [token, setToken] = useState("");
 
+  // Handle user logout
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("tokenExpiration");
+    setToken("");
+  };
+
   useEffect(() => {
     const getTokenFromLocalStorage = () => window.localStorage.getItem("token");
 
+    // Extracting token from URL hash or local storage
     const hash = window.location.hash;
     window.location.hash = "";
-
     const newToken = hash ? hash.split("&")[0].split("=")[1] : getTokenFromLocalStorage();
 
+    // Handle token expiration and refreshing token if necessary
     if (newToken) {
       const expiresIn = hash ? parseInt(hash.split("&")[2].split("=")[1]) : null;
       if (expiresIn) {
@@ -31,7 +40,7 @@ function App() {
     } else {
       setToken(getTokenFromLocalStorage());
     }
-
+    // Check token expiration and redirect to login if expired
     const checkTokenExpiration = () => {
       const tokenExpiration = window.localStorage.getItem("tokenExpiration");
       const currentTime = Date.now() / 1000;
@@ -42,20 +51,23 @@ function App() {
       }
     };
 
-    const intervalId = setInterval(checkTokenExpiration, 60 * 1000);
-
+    // Check token expiration every hour (based on Spotify API documentation)
+    const intervalId = setInterval(checkTokenExpiration, 60 * 60 * 1000);
     checkTokenExpiration();
-
     return () => clearInterval(intervalId);
+
   }, [loginEndpoint]);
 
   return (
     <div className="App">
-      {!token ? (
-        <Login loginEndpoint={loginEndpoint} />
-      ) : (
-        <MusicPlayer token={token} />
+      {token && (
+        <div className="App__header">
+          <Header logout={logout} />
+        </div>
       )}
+      <div className="App__body">
+        {!token ? <Login loginEndpoint={loginEndpoint} /> : <MusicPlayer token={token} />}
+      </div>
     </div>
   );
 }

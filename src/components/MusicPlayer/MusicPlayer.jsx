@@ -2,11 +2,11 @@ import "./MusicPlayer.scss";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import RecordPlayer from "../RecordPlayer/RecordPlayer";
-
-import NextIcon from "../../assets/icons/next.svg";
-import PlayIcon from "../../assets/icons/play.svg";
-import PauseIcon from "../../assets/icons/pause.svg";
-import PreviousIcon from "../../assets/icons/previous.svg";
+import Loader from "../Loader/Loader";
+import nextIcon from "../../assets/icons/next.svg";
+import playIcon from "../../assets/icons/play.svg";
+import pauseIcon from "../../assets/icons/pause.svg";
+import previousIcon from "../../assets/icons/previous.svg";
 
 function MusicPlayer({ token }) {
   const [likedSongs, setLikedSongs] = useState([]);
@@ -84,7 +84,7 @@ function MusicPlayer({ token }) {
 
   // Loading, error and empty state handles
   if (isLoading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
 
   if (error) {
@@ -117,13 +117,13 @@ function MusicPlayer({ token }) {
         />
         <div className="music-player__controls">
           <button onClick={playPreviousSong} className="music-player__control">
-            <img src={PreviousIcon} alt="previous" />
+            <img src={previousIcon} alt="previous" />
           </button>
           <button onClick={togglePlayPause} className="music-player__control">
-            <img src={isPlaying ? PauseIcon : PlayIcon} alt="pause/play" />
+            <img src={isPlaying ? pauseIcon : playIcon} alt="pause/play" />
           </button>
           <button onClick={playNextSong} className="music-player__control">
-            <img src={NextIcon} alt="next" />
+            <img src={nextIcon} alt="next" />
           </button>
         </div>
       </div>
