@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 function App() {
   const authEndpoint = "https://accounts.spotify.com/authorize?";
   const clientID = "c033eeb2e84b4c1b9ac6f858f3c68a27";
-  const redirectUri = "http://localhost:3000";
+  const redirectUri = "https://spotifyplayer-amandafuhrer.vercel.app";
   const scopes = ["user-library-read", "streaming"];
   const loginEndpoint = `${authEndpoint}client_id=${clientID}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialogue=true`;
 
@@ -30,9 +30,7 @@ function App() {
 
     // Handle token expiration and refreshing token if necessary
     if (newToken) {
-      const expiresIn = hash
-        ? parseInt(hash.split("&")[2].split("=")[1])
-        : null;
+      const expiresIn = hash ? parseInt(hash.split("&")[2].split("=")[1]) : null;
       if (expiresIn) {
         const expirationTime = Date.now() / 1000 + expiresIn;
         window.localStorage.setItem("tokenExpiration", expirationTime);
@@ -57,7 +55,7 @@ function App() {
     const intervalId = setInterval(checkTokenExpiration, 60 * 60 * 1000);
     checkTokenExpiration();
     return () => clearInterval(intervalId);
-    
+
   }, [loginEndpoint]);
 
   return (
