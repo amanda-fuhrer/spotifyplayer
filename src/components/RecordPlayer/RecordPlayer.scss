@@ -41,8 +41,14 @@
       }
     }
 
-    &.spin {
+    &.run {
       animation: spin 5s linear infinite forwards;
+      animation-play-state: running;
+    }
+
+    &.pause {
+      animation: spin 5s linear infinite forwards;
+      animation-play-state: paused;
     }
   }
 
