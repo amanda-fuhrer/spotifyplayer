@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './SongList.scss';
 
-function SongList({ likedSongs, onSongSelect }) {
-  const [selectedSongIndex, setSelectedSongIndex] = useState(0);
+function SongList({ likedSongs, onSongSelect, currentPlayingIndex }) {
+  const [selectedSongIndex, setSelectedSongIndex] = useState(currentPlayingIndex || 0);
+
+  useEffect(() => {
+    setSelectedSongIndex(currentPlayingIndex);
+  }, [currentPlayingIndex]);
 
   const handleSongSelect = (index) => {
     setSelectedSongIndex(index);

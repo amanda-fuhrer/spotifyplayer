@@ -105,8 +105,8 @@ function MusicPlayer({ token }) {
 
   return (
     <section className="music-player">
-      <SongList likedSongs={likedSongs} onSongSelect={handleSongSelect} className="music-player__song-list"/>
-      <RecordPlayer currentSong={currentSong} isPlaying={isPlaying} className="music-player__record"/>
+      <SongList likedSongs={likedSongs} onSongSelect={handleSongSelect} currentPlayingIndex={currentSongIndex} />
+      <RecordPlayer currentSong={currentSong} isPlaying={isPlaying} />
       <div className="music-player__details">
         <h1 className="music-player__track">{currentSong.name}</h1>
         <h2 className="music-player__artist">
