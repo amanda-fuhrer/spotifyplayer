@@ -2,49 +2,51 @@
 @import "../../partials/_variables.scss";
 
 .music-player {
-  background-color: $secondary-background;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 0.5rem;
-  padding: 2rem;
-  width: 80%;
+  flex-direction: column-reverse;
+  margin: 5rem 0;
 
-  @include tablet {
+  @include desktop {
     flex-direction: row;
-    max-width: 50rem;
   }
 
   &__details {
-    padding-top: 2rem;
+    background-color: $secondary-background;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;
-
-    @include tablet {
-      padding-left: 3rem;
+    justify-content: center;
+    border-radius: 0.2rem;
+    padding: 1rem;
+  
+    @include desktop {
+      width: 20rem;
+      height: 30rem;
     }
   }
 
   &__controls {
     display: flex;
+    margin-top: 2rem;
+
+    &__control {
+      margin: 0 1rem;
+    }
   }
 
-  &__control {
-    margin: 2rem 1rem 0 1rem;
-  }
-
-  &__artist {
-    font-size: 1rem;
+  &__artist,
+  &__track {
     color: $primary-text;
     padding-top: 1rem;
     font-weight: 400;
   }
 
+  &__artist {
+    font-size: 1rem;
+  }
+
   &__track {
-    font-size: 1.5rem;
-    color: $primary-text;
+    font-size: 1.2rem;
     text-transform: uppercase;
     font-weight: 600;
   }

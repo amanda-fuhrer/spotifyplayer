@@ -55,19 +55,22 @@ function App() {
     const intervalId = setInterval(checkTokenExpiration, 60 * 60 * 1000);
     checkTokenExpiration();
     return () => clearInterval(intervalId);
-
   }, [loginEndpoint]);
 
   return (
     <div className="App">
-      {token && (
-        <div className="App__header">
-          <Header logout={logout} />
+      {!token ? (
+        <Login loginEndpoint={loginEndpoint}/>
+      ) : (
+        <div>
+          <div className="App__header">
+            <Header logout={logout} />
+          </div>
+          <div className="App__body">
+            <MusicPlayer token={token} />
+          </div>
         </div>
       )}
-      <div className="App__body">
-        {!token ? <Login loginEndpoint={loginEndpoint} /> : <MusicPlayer token={token} />}
-      </div>
     </div>
   );
 }

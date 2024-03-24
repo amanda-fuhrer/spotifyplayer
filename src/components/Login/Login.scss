@@ -5,6 +5,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  width: 100vw; 
+  height: 100vh;
 
   &__logo {
     width: 15rem;

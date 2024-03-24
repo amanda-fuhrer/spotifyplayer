@@ -7,15 +7,16 @@
   background-color: $primary-background;
   color: $secondary-text;
   font-family: "Outfit";
+  min-height: 100vh;
 
   &__header {
     position: absolute;
   }
 
   &__body {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
   }
 }
