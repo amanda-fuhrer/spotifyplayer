@@ -44,6 +44,10 @@
     }
   }
 
+  &__item.selected {
+    background-color: #f0f0f0;
+  }
+
   &__index-header,
   &__index {
     flex-basis: 10%;

@@ -1,6 +1,14 @@
-import "./SongList.scss";
+import { useState } from 'react';
+import './SongList.scss';
 
 function SongList({ likedSongs, onSongSelect }) {
+  const [selectedSongIndex, setSelectedSongIndex] = useState(0);
+
+  const handleSongSelect = (index) => {
+    setSelectedSongIndex(index);
+    onSongSelect(index);
+  };
+
   return (
     <section className="songs-list">
       <ul className="songs-list__container">
@@ -11,8 +19,8 @@ function SongList({ likedSongs, onSongSelect }) {
         {likedSongs.map((songItem, index) => (
           <li
             key={songItem.track.id}
-            className="songs-list__item"
-            onClick={() => onSongSelect(index)}
+            className={`songs-list__item ${index === selectedSongIndex ? 'selected' : ''}`}
+            onClick={() => handleSongSelect(index)}
           >
             <div className="songs-list__index">{index + 1}</div>
             <div className="songs-list__title-artist">
