@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import needle from "../../assets/images/needle.svg";
 import vinyl from "../../assets/images/vinyl.svg";
 
-function RecordPlayer({ currentSong, isPlaying }) {
+function RecordPlayer({ isPlaying }) {
   const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {

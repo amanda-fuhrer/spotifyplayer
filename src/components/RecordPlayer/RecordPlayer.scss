@@ -19,11 +19,14 @@
   padding: 1rem;
   margin: 0.5rem 0;
   position: relative;
+  order: 1;
+  margin: 0;
 
   @include desktop {
     margin: 0 0.5rem;
     width: 28rem;
     height: 30rem;
+    order: 2;
   }
 
   &__record {

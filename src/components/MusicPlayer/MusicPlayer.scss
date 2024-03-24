@@ -3,7 +3,7 @@
 
 .music-player {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   margin: 5rem 0;
 
   @include desktop {
@@ -18,20 +18,24 @@
     justify-content: center;
     border-radius: 0.2rem;
     padding: 1rem;
+    order: 2;
+    margin: 0.5rem 0;
   
     @include desktop {
+      margin: 0;
       width: 20rem;
       height: 30rem;
+      order: 3;
     }
   }
 
   &__controls {
     display: flex;
     margin-top: 2rem;
+  }
 
-    &__control {
-      margin: 0 1rem;
-    }
+  &__control {
+    margin: 0 1rem;
   }
 
   &__artist,

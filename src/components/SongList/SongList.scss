@@ -9,10 +9,12 @@
   border-radius: 0.2rem;
   overflow-y: auto;
   padding: 1rem;
+  order: 3;
 
   @include desktop {
     width: 28rem;
     height: 30rem;
+    order: 1;
   }
 
   &__header,

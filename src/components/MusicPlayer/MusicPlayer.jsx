@@ -85,7 +85,7 @@ function MusicPlayer({ token }) {
 
   const handleSongSelect = (index) => {
     setCurrentSongIndex(index);
-    setIsPlaying(true); // Automatically play the selected song
+    setIsPlaying(true);
   };
 
   // Loading, error and empty state handles
@@ -105,8 +105,8 @@ function MusicPlayer({ token }) {
 
   return (
     <section className="music-player">
-      <SongList likedSongs={likedSongs} onSongSelect={handleSongSelect}/>
-      <RecordPlayer currentSong={currentSong} isPlaying={isPlaying} />
+      <SongList likedSongs={likedSongs} onSongSelect={handleSongSelect} className="music-player__song-list"/>
+      <RecordPlayer currentSong={currentSong} isPlaying={isPlaying} className="music-player__record"/>
       <div className="music-player__details">
         <h1 className="music-player__track">{currentSong.name}</h1>
         <h2 className="music-player__artist">
