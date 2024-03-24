@@ -1,5 +1,5 @@
 import "./Login.scss";
-import logo from "../../assets/images/spotify-logo.png";
+import logo from "../../assets/images/logo.svg";
 
 function Login({ loginEndpoint }) {
   return (

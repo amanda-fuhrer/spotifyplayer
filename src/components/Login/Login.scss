@@ -3,6 +3,7 @@
 
 .login {
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   &__logo {
@@ -11,12 +12,11 @@
   }
 
   &__button {
-    width: 15rem;
+    width: 10rem;
     padding: 0.5rem;
     background-color: $primary-background;
     color: $secondary-text;
     font-family: "MPLUSCodeLatin";
-    border-radius: 0.5rem;
     border: solid 0.1rem $border;
     font-size: 1rem;
 
