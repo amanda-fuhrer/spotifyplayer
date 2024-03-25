@@ -11,56 +11,55 @@
 }
 
 .record-player {
+  background-color: $secondary-background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  padding: 1rem;
+  margin: 0.5rem 0;
   position: relative;
+  order: 1;
+  margin: 0;
+
+  @include desktop {
+    margin: 0 0.5rem;
+    width: 28rem;
+    height: 30rem;
+    order: 2;
+  }
 
   &__record {
     width: 15rem;
     height: 15rem;
-    border-radius: 100%;
-    background-color: $primary-background;
-    display: flex;
+    border-radius: 50%;
     position: relative;
+    animation: spin 5s linear infinite forwards;
 
-    @include tablet {
-      width: 20rem;
-      height: 20rem;
-    }
-
-    &__cover {
-      width: 6rem;
-      height: 6rem;
-      border-radius: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      @include tablet {
-        width: 8rem;
-        height: 8rem;
-      }
+    @include desktop {
+      width: 24rem;
+      height: 24rem;
     }
 
     &.run {
-      animation: spin 5s linear infinite forwards;
       animation-play-state: running;
     }
 
     &.pause {
-      animation: spin 5s linear infinite forwards;
       animation-play-state: paused;
     }
   }
 
   &__needle {
-    height: 12rem;
+    height: 10rem;
     position: absolute;
-    top: 45%;
-    left: 90%;
+    top: 38%;
+    left: 78%;
     transform: translate(-50%, -50%);
 
-    @include tablet {
-      height: 16rem;
+    @include desktop {
+      height: 15rem;
+      left: 85%;
     }
   }
 }

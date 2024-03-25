@@ -1,8 +1,9 @@
 import "./RecordPlayer.scss";
 import { useState, useEffect } from "react";
 import needle from "../../assets/images/needle.svg";
+import vinyl from "../../assets/images/vinyl.svg";
 
-function RecordPlayer({ currentSong, isPlaying }) {
+function RecordPlayer({ isPlaying }) {
   const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
@@ -11,13 +12,7 @@ function RecordPlayer({ currentSong, isPlaying }) {
 
   return (
     <section className="record-player">
-      <div className={`record-player__record ${animationClass}`}>
-        <img
-          src={currentSong.album.images[1].url}
-          alt="album cover"
-          className="record-player__record__cover"
-        />
-      </div>
+      <img src={vinyl} alt="vinyl" className={`record-player__record ${animationClass}`}/>
       <img src={needle} alt="record needle" className="record-player__needle" />
     </section>
   );

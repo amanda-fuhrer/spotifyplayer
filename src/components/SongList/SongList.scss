@@ -1,0 +1,80 @@
+@import "../../partials/_mixins.scss";
+@import "../../partials/_variables.scss";
+
+.songs-list {
+  background-color: $secondary-background;
+  color: $primary-text;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.2rem;
+  overflow-y: auto;
+  padding: 1rem;
+  order: 3;
+
+  @include desktop {
+    width: 28rem;
+    height: 30rem;
+    order: 1;
+  }
+
+  &__header,
+  &__item {
+    margin: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__header {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-bottom: solid #C4C3C0 0.07rem;
+  }
+
+  &__item {
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    border-bottom: solid #C4C3C0 0.07rem;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__item.selected {
+    background-color: #f0f0f0;
+  }
+
+  &__index-header,
+  &__index {
+    flex-basis: 10%;
+    align-self: center;
+  }
+
+  &__title-artist-header {
+    padding-left: 1rem;
+    flex-basis: 90%; 
+  }
+
+  &__title-artist {
+    flex-basis: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__artist {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    padding-left: 1rem;
+  }
+
+  &__track-name {
+    padding-left: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -2,6 +2,7 @@ import "./MusicPlayer.scss";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import RecordPlayer from "../RecordPlayer/RecordPlayer";
+import SongList from "../SongList/SongList";
 import Loader from "../Loader/Loader";
 import nextIcon from "../../assets/icons/next.svg";
 import playIcon from "../../assets/icons/play.svg";
@@ -82,6 +83,11 @@ function MusicPlayer({ token }) {
     }
   };
 
+  const handleSongSelect = (index) => {
+    setCurrentSongIndex(index);
+    setIsPlaying(true);
+  };
+
   // Loading, error and empty state handles
   if (isLoading) {
     return <Loader />;
@@ -99,6 +105,7 @@ function MusicPlayer({ token }) {
 
   return (
     <section className="music-player">
+      <SongList likedSongs={likedSongs} onSongSelect={handleSongSelect} currentPlayingIndex={currentSongIndex} />
       <RecordPlayer currentSong={currentSong} isPlaying={isPlaying} />
       <div className="music-player__details">
         <h1 className="music-player__track">{currentSong.name}</h1>
